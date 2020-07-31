@@ -26,8 +26,9 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    console.log('tetes');
-    const URL = 'http://localhost:8080/categorias';
+    const URL = window.location.hostname.includes('localgost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://mayflix.herokuapp.com/categorias';
     fetch(URL)
       .then(async (respostaDoServidor) => {
         const resposta = await respostaDoServidor.json();
@@ -75,7 +76,7 @@ function CadastroCategoria() {
           label="Cor"
           type="color"
           name="cor"
-          values={values.cor}
+          value={values.cor}
           onChange={handleChange}
         />
 
